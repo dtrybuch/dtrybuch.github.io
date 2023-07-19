@@ -1,0 +1,46 @@
+.menu {
+    margin: 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+    font-size: calc(20px + 0.390625vw);;
+}
+
+.sticky-row {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color .2s ease-in-out;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.scrolled {
+    background-color: rgb(228, 228, 228);
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    margin-top: 0;
+}
+
+@media only screen and (min-width: 768px) {
+
+    /* For desktop: */
+    .menu a {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+.menu a:hover {
+    background-color: rgba(241, 241, 241, 0.185);
+    color: rgb(85, 103, 185);
+}
