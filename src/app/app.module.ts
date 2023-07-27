@@ -8,6 +8,8 @@ import { MenuComponent } from './menu/menu.component';
 import { SliderComponent } from './slider/slider.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SmallSliderComponent } from './small-slider/small-slider.component';
+import { RightSideImageComponent } from './right-side-image/right-side-image.component';
+import { LeftSideImageComponent } from './left-side-image/left-side-image.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { SmallSliderComponent } from './small-slider/small-slider.component';
     MenuComponent,
     SliderComponent,
     AboutUsComponent,
-    SmallSliderComponent
+    SmallSliderComponent,
+    RightSideImageComponent,
+    LeftSideImageComponent
   ],
   imports: [
     BrowserModule,

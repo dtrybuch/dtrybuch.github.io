@@ -3,7 +3,7 @@ import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss', '../app.component.scss']
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
   constructor(private el: ElementRef, private renderer: Renderer2){

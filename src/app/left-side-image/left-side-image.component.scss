@@ -1,0 +1,35 @@
+$row-height: 80vh;
+
+.image-left {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    background-color: rgb(247, 245, 245);
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    /* For desktop: */
+
+    .col-5 {
+        height: $row-height;
+        float:right;
+    }
+
+
+
+    .col-7 {
+        height: $row-height;
+        float:left;
+    }
+
+    .image {
+        max-width: 100%;
+    }
+
+}
+
+.image {
+    // height: $row-height;
+    width: 100vw;
+}
