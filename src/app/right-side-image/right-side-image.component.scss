@@ -3,6 +3,15 @@ $row-height: 80vh;
 .image-right {
     padding-top: 10vh;
     padding-bottom: 10vh;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.order-1{
+    order:1;
+  }
+.order-2{
+order:2;
 }
 
 @media only screen and (min-width: 768px) {
@@ -23,6 +32,14 @@ $row-height: 80vh;
 
     .image {
         max-width: 100%;
+    }
+
+    .order-lg-1{
+        order:1;
+      }
+
+    .order-lg-2{
+    order:2;
     }
 
 }

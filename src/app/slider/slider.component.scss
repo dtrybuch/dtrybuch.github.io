@@ -1,6 +1,6 @@
 .slider {
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
     position: relative;
     margin: 0;
 }
@@ -82,4 +82,10 @@
         padding-right: 50px;
         top: 40%;
     }
+
+    .slider {
+        height: 100vh;
+    }
+
+
 }

@@ -3,6 +3,8 @@
     box-sizing: border-box;
 }
 
+$centered-div-padding: 20vh;
+
 .row::after {
     content: "";
     clear: both;
@@ -68,6 +70,14 @@
     .col-12 {
         width: 100%;
     }
+
+    .centered-div {
+        align-content: center;
+        align-items: center;
+    
+        padding: $centered-div-padding;
+        font-size: calc(20px + 0.1vw);;
+    }
 }
 
 html {
@@ -77,7 +87,7 @@ html {
 .centered-div {
     align-content: center;
     align-items: center;
-
-    padding: 20vh;
+    text-align: center;
+    padding: 5px;
     font-size: calc(20px + 0.1vw);;
 }
