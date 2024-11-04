@@ -74,6 +74,7 @@ $centered-div-padding: 20vh;
     .centered-div {
         align-content: center;
         align-items: center;
+        vertical-align: middle;
     
         padding: $centered-div-padding;
         font-size: calc(20px + 0.1vw);;
@@ -88,6 +89,8 @@ html {
     align-content: center;
     align-items: center;
     text-align: center;
+    vertical-align: middle;
     padding: 5px;
     font-size: calc(20px + 0.1vw);;
+    height: 100%;
 }

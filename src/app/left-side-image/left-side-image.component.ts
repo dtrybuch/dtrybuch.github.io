@@ -8,9 +8,11 @@ import { Component, Input } from '@angular/core';
 export class LeftSideImageComponent {
   @Input() image: string;
   @Input() title: string;
+  @Input() content: string;
 
   constructor() {
     this.image = "";
     this.title = "";
+    this.content = "";
   }
 }

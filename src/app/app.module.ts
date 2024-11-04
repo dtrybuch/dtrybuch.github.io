@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { SliderComponent } from './slider/slider.component';
-import { AboutUsComponent } from './about-us/about-us.component';
 import { SmallSliderComponent } from './small-slider/small-slider.component';
 import { RightSideImageComponent } from './right-side-image/right-side-image.component';
 import { LeftSideImageComponent } from './left-side-image/left-side-image.component';
@@ -17,7 +16,6 @@ import { LeftSideImageComponent } from './left-side-image/left-side-image.compon
     HomePageComponent,
     MenuComponent,
     SliderComponent,
-    AboutUsComponent,
     SmallSliderComponent,
     RightSideImageComponent,
     LeftSideImageComponent

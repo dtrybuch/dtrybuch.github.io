@@ -1,9 +1,9 @@
 
 <!-- https://unused-css.com/blog/css-only-background-slider/ -->
 
-<app-slider></app-slider>
-<app-right-side-image image="../../assets/images.jpg" title="Najlepszy domek w górach"></app-right-side-image>
-<app-left-side-image image="../../assets/images.jpg" title="Najlepszy domek w górach"></app-left-side-image>
-<app-right-side-image image="../../assets/images2.jpg" title="Najlepszy domek w górach"></app-right-side-image>
-<app-left-side-image image="../../assets/images.jpg" title="Najlepszy domek w górach"></app-left-side-image>
+<app-slider [centerName]="title"></app-slider>
+<app-right-side-image image="../../assets/images.jpg" [title]="firstTitle" [content]="firstContent"></app-right-side-image>
+<app-left-side-image image="../../assets/images.jpg" [title]="secondTitle" [content]="secondContent"></app-left-side-image>
+<app-right-side-image image="../../assets/taraz-z-widokiem.jpg" [title]="thirdTitle" [content]="thirdContent"></app-right-side-image>
+<app-left-side-image image="../../assets/jacuzzi-w-tarasie.jpg" [title]="fourthTitle" [content]="fourthContent"></app-left-side-image>
 <router-outlet></router-outlet>

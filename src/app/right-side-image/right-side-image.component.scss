@@ -3,15 +3,16 @@ $row-height: 80vh;
 .image-right {
     padding-top: 10vh;
     padding-bottom: 10vh;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
 }
 
-.order-1{
-    order:1;
-  }
-.order-2{
-order:2;
+.order-1 {
+    order: 1;
+}
+
+.order-2 {
+    order: 2;
 }
 
 @media only screen and (min-width: 768px) {
@@ -20,26 +21,26 @@ order:2;
 
     .col-5 {
         height: $row-height;
-        float:left;
+        float: left;
     }
 
 
 
     .col-7 {
         height: $row-height;
-        float:right;
+        float: right;
     }
 
     .image {
         max-width: 100%;
     }
 
-    .order-lg-1{
-        order:1;
-      }
+    .order-lg-1 {
+        order: 1;
+    }
 
-    .order-lg-2{
-    order:2;
+    .order-lg-2 {
+        order: 2;
     }
 
 }
@@ -47,4 +48,16 @@ order:2;
 .image {
     // height: $row-height;
     width: 100vw;
+}
+
+.title {
+    margin: 0;
+    width: 100%;
+    color: grey;
+}
+
+.content {
+    color: rgb(144, 142, 142);
+    margin-left: 7vw;
+    margin-right: 7vw;
 }

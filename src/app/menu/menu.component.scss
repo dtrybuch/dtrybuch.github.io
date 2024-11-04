@@ -13,7 +13,8 @@
     transform: translateX(-50%);
     transition: background-color .5s ease-in-out;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 0;
+    background-color: rgba(228, 228, 228, 0.436);
 }
 
 .menu a {
@@ -22,11 +23,20 @@
     text-align: center;
     padding: 10px;
     text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.left-padding {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .scrolled {
-    background-color: rgb(228, 228, 228);
-    margin-top: 0;
+    background-color: rgba(228, 228, 228, 0.884);
+}
+
+.scrolled :hover {
+    background-color: rgba(228, 228, 228, 1);
 }
 
 @media only screen and (min-width: 768px) {
@@ -35,13 +45,10 @@
     .menu a {
         padding: 30px;
     }
-
-    .scrolled {
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
-    }
 }
 
 .menu a:hover {
     color: rgb(85, 103, 185);
+    background-color: rgba(228, 228, 228, 0.768);
+    border: 1px solid rgb(86, 85, 85);
 }

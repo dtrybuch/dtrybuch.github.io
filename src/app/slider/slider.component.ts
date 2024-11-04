@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./slider.component.scss', '../app.component.scss']
 })
 export class SliderComponent {
+  @Input() 
+  centerName: string;
 
+  constructor() {
+    this.centerName = "";
+  }
 }
