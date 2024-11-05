@@ -10,7 +10,7 @@ import { SmallSliderComponent } from './small-slider/small-slider.component';
 import { RightSideImageComponent } from './right-side-image/right-side-image.component';
 import { LeftSideImageComponent } from './left-side-image/left-side-image.component';
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
-import {JsonPipe} from '@angular/common';
+import {AsyncPipe, JsonPipe} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { GalleryModule } from 'ng-gallery';
+import { LightboxModule } from 'ng-gallery/lightbox';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,10 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     MatIconModule,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    GalleryModule,
+    LightboxModule,
+    AsyncPipe
   ],
   providers: [provideAnimations(), MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},],
   bootstrap: [AppComponent]

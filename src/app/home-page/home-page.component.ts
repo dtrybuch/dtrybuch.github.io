@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ImageItem } from 'ng-gallery';
 
 @Component({
   selector: 'app-home-page',
@@ -23,4 +24,10 @@ export class HomePageComponent {
   fourthTitle: string = "Strefa Relaksu z Jacuzzi"; 
 
   fourthContent: string = `Prawdziwym luksusem Rożnowskiego Domku Wytchnienia jest strefa relaksu z jacuzzi, zanurzonego w zieleni, gdzie można odpocząć pod rozgwieżdżonym niebem. Ciepła woda i hydromasaż zapewniają pełne odprężenie po dniu pełnym aktywności. To idealne miejsce na wieczorne chwile regeneracji i relaksu w wyjątkowej atmosferze.`;
+
+  images = [
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/images.jpg' }),
+  ];
+
 }
