@@ -2,6 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DateRange, DefaultMatCalendarRangeStrategy, MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
+import { Title } from '@angular/platform-browser';
 import * as moment from 'moment';
 
 export const MY_FORMATS = {
@@ -36,12 +37,14 @@ export class ReservationPageComponent {
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+    rodo: new FormControl(false, [Validators.required]),
   });
 
   get firstNameInput() { return this.personal.get('firstName'); }
   get lastNameInput() { return this.personal.get('lastName'); }
   get emailInput() { return this.personal.get('email'); }
   get phoneNumberInput() { return this.personal.get('phoneNumber'); }
+  get rodoInput() { return this.personal.get('rodo'); }
 
   selectedDateRange!: DateRange<Date>;
 
@@ -60,6 +63,13 @@ export class ReservationPageComponent {
   defaultPricePerDay : number = 800;
 
   price!: number;
+
+  /**
+   *
+   */
+  constructor(private mainTitle: Title) {
+    this.mainTitle.setTitle(this.title);
+  }
 
   _onSelectedChange(date: Date | null): void {
     if (date) {
@@ -94,7 +104,7 @@ export class ReservationPageComponent {
   };
 
   isAnyError() {
-    return this.selectedDateRange?.start == null || this.selectedDateRange?.end == null || this.firstNameInput?.errors || this.lastNameInput?.errors || this.emailInput?.errors || this.phoneNumberInput?.errors;
+    return this.selectedDateRange?.start == null || this.selectedDateRange?.end == null || this.firstNameInput?.errors || this.lastNameInput?.errors || this.emailInput?.errors || this.phoneNumberInput?.errors || this.rodoInput?.value == false;;
   }
 
   submitReservation() {

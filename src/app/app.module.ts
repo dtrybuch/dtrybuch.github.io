@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { GalleryModule } from 'ng-gallery';
 import { LightboxModule } from 'ng-gallery/lightbox';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { LightboxModule } from 'ng-gallery/lightbox';
     MatButtonModule,
     GalleryModule,
     LightboxModule,
-    AsyncPipe
+    AsyncPipe,
+    MatCheckboxModule
   ],
   providers: [provideAnimations(), MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},],
   bootstrap: [AppComponent]

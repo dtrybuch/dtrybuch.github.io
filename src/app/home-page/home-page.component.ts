@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { ImageItem } from 'ng-gallery';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit{
   title: string = "Rożnowski Domek Wytchnienia";
 
   firstTitle: string = "Twój Azyl nad Jeziorem Rożnowskim";
@@ -25,9 +26,56 @@ export class HomePageComponent {
 
   fourthContent: string = `Prawdziwym luksusem Rożnowskiego Domku Wytchnienia jest strefa relaksu z jacuzzi, zanurzonego w zieleni, gdzie można odpocząć pod rozgwieżdżonym niebem. Ciepła woda i hydromasaż zapewniają pełne odprężenie po dniu pełnym aktywności. To idealne miejsce na wieczorne chwile regeneracji i relaksu w wyjątkowej atmosferze.`;
 
-  images = [
+  images: ImageItem[] = [
     new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
+    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
+    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
   ];
+
+  imagesChunks: ImageItem[][] = [];
+
+  /**
+   *
+   */
+  constructor(public gallery: Gallery, private mainTitle: Title) {
+    this.mainTitle.setTitle(this.title);
+  }
+  
+  ngOnInit() {
+    // Load items into gallery
+    this.setChunksOnPage();
+    const galleryRef = this.gallery.ref();
+    galleryRef.load(this.images);
+  }
+
+  private setChunksOnPage() {
+    this.imagesChunks = this.countChunks(this.images, 4);
+  }
+
+  private countChunks(chunkImages: any, chunkSize: number)
+  {
+    let tmpChunks = [];
+    if(chunkImages)
+    {
+      for (let i = 0; i < chunkImages.length; i += chunkSize) {
+        let chunk = chunkImages.slice(i, i + chunkSize);
+        tmpChunks.push(chunk);
+      }
+    }
+    return tmpChunks;
+  }
 
 }

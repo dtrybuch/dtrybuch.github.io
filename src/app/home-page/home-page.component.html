@@ -1,10 +1,27 @@
-
 <!-- https://unused-css.com/blog/css-only-background-slider/ -->
 
 <app-slider [centerName]="title"></app-slider>
-<app-right-side-image image="../../assets/images.jpg" [title]="firstTitle" [content]="firstContent"></app-right-side-image>
-<app-left-side-image image="../../assets/images.jpg" [title]="secondTitle" [content]="secondContent"></app-left-side-image>
-<app-right-side-image image="../../assets/taraz-z-widokiem.jpg" [title]="thirdTitle" [content]="thirdContent"></app-right-side-image>
-<app-left-side-image image="../../assets/jacuzzi-w-tarasie.jpg" [title]="fourthTitle" [content]="fourthContent"></app-left-side-image>
+<app-right-side-image image="../../assets/images.jpg" [title]="firstTitle"
+    [content]="firstContent"></app-right-side-image>
+<app-left-side-image image="../../assets/images.jpg" [title]="secondTitle"
+    [content]="secondContent"></app-left-side-image>
+<app-right-side-image image="../../assets/taraz-z-widokiem.jpg" [title]="thirdTitle"
+    [content]="thirdContent"></app-right-side-image>
+<app-left-side-image image="../../assets/jacuzzi-w-tarasie.jpg" [title]="fourthTitle"
+    [content]="fourthContent"></app-left-side-image>
 
-<gallery [items]="images" thumbPosition="top"></gallery>
+<!-- <gallery [items]="images" thumbPosition="top"></gallery> -->
+<div class="row">
+
+    <div class="col-5"></div>
+    <div class="col-2 title"> Galeria</div>
+    <div class="col-5"></div>
+</div>
+
+<div class="row" *ngFor="let imagesChunk of imagesChunks; let i = index;" >
+    <div class="col-2"></div>
+    <div class="grid-item col-2" *ngFor="let image of imagesChunk; let j = index" [lightbox]="j + i*j">
+        <img [src]="image.data.thumb" class="image"><img>
+    </div>
+    <div class="col-2"></div>
+</div>
