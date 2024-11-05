@@ -2,14 +2,68 @@
 
 <div class="row reservation-row">
     <div class="col-3"></div>
-    <div class="col-2" style="text-align: center;">
+    <div class="col-2">
         <div class="title">
             Wybierz datę rezerwacji
         </div>
-        <mat-card>
-            <mat-calendar (selectedChange)="_onSelectedChange($event)"
-              [selected]="selectedDateRange" [dateFilter]="myFilter" [minDate]="minDate" [maxDate]="maxDate">
+        <mat-card class="field">
+            <mat-calendar (selectedChange)="_onSelectedChange($event)" [selected]="selectedDateRange"
+                [dateFilter]="myFilter" [minDate]="minDate" [maxDate]="maxDate">
             </mat-calendar>
         </mat-card>
+        <p></p>
+        <div class="title" *ngIf="price">
+            Cena : {{price}} zł
+        </div>
+        <div class="title" *ngIf="!price">
+            Po wybraniu dat pojawi się cena!
+        </div>
     </div>
+    <div class="col-2"></div>
+    <div class="col-2" style="vertical-align: top;">
+        <div class="title">
+            Podaj dane osobowe
+        </div>
+        <form [formGroup]="personal">
+            <p>
+                <mat-form-field class="field">
+                    <mat-label>Imię</mat-label>
+                    <input matInput [type]="'text'" formControlName="firstName" required>
+                    <mat-hint *ngIf="!firstNameInput?.value" style="color: red;  font-size: 11px;">Pole
+                        wymagane</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="field">
+                    <mat-label>Nazwisko</mat-label>
+                    <input matInput [type]="'text'" formControlName="lastName" required>
+                    <mat-hint *ngIf="!lastNameInput?.value" style="color: red;  font-size: 11px;">Pole
+                        wymagane</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="field">
+                    <mat-label>Email</mat-label>
+                    <input matInput [type]="'email'" formControlName="email" required>
+                    <mat-hint *ngIf="!emailInput?.value" style="color: red;  font-size: 11px;">Pole
+                        wymagane</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="field">
+                    <mat-label>Telefon</mat-label>
+                    <span matPrefix>+48 &nbsp;</span>
+                    <input matInput placeholder="000000000" [type]="'text'" formControlName="phoneNumber" maxLength="9"
+                        required>
+                    <mat-hint *ngIf="!phoneNumberInput?.value" style="color: red;  font-size: 11px;">Pole
+                        wymagane</mat-hint>
+                </mat-form-field>
+            </p>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<div class="row">
+    <div class="col-5"></div>
+    <div class="col-2">
+        <button mat-raised-button color="primary" class="reserve-button" [disabled]="isAnyError()" (click)="submitReservation()">Potwierdź rezerwację</button>
+    </div>
+    <div class="col-5"></div>
 </div>

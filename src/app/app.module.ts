@@ -18,6 +18,9 @@ import { MAT_DATE_LOCALE, MatNativeDateModule, MatRippleModule } from '@angular/
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon'
 import {MatCardModule} from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import {MatCardModule} from '@angular/material/card';
     RightSideImageComponent,
     LeftSideImageComponent,
     ReservationPageComponent,
+    ContactPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import {MatCardModule} from '@angular/material/card';
     MatNativeDateModule,
     MatRippleModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [provideAnimations(), MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},],
   bootstrap: [AppComponent]

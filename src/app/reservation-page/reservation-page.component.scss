@@ -6,4 +6,28 @@
 .title {
     margin-bottom: 20px;
     font-size: large;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.field {
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.reserve-button {
+    width: 100%;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    /* For desktop: */
+    .field {
+        width: 300px;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
