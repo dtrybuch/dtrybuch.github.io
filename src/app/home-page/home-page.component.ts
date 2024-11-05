@@ -26,24 +26,7 @@ export class HomePageComponent implements OnInit{
 
   fourthContent: string = `Prawdziwym luksusem Rożnowskiego Domku Wytchnienia jest strefa relaksu z jacuzzi, zanurzonego w zieleni, gdzie można odpocząć pod rozgwieżdżonym niebem. Ciepła woda i hydromasaż zapewniają pełne odprężenie po dniu pełnym aktywności. To idealne miejsce na wieczorne chwile regeneracji i relaksu w wyjątkowej atmosferze.`;
 
-  images: ImageItem[] = [
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-    new ImageItem({ src: '../../assets/images.jpg', thumb: '../../assets/images.jpg' }),
-    new ImageItem({ src: '../../assets/taraz-z-widokiem.jpg', thumb: '../../assets/taraz-z-widokiem.jpg' }),
-  ];
+  images: ImageItem[] = [];
 
   imagesChunks: ImageItem[][] = [];
 
@@ -52,6 +35,10 @@ export class HomePageComponent implements OnInit{
    */
   constructor(public gallery: Gallery, private mainTitle: Title) {
     this.mainTitle.setTitle(this.title);
+    let imagesCount = 10;
+    for (let i = 1; i <= imagesCount; i++) {
+      this.images.push(new ImageItem({ src: `../../assets/images${i}.jpg`, thumb: `../../assets/images${i}.jpg` }))
+    }
   }
   
   ngOnInit() {

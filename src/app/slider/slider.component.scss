@@ -15,7 +15,7 @@
 }
 
 .slider .slide:nth-child(1) {
-    background-image: url('../../assets/images.jpg');
+    background-image: url('../../assets/images1.jpg');
     animation-delay: 0s;
 }
 
@@ -25,12 +25,12 @@
 }
 
 .slider .slide:nth-child(3) {
-    background-image: url('../../assets/jacuzzi-w-tarasie.jpg');
+    background-image: url('../../assets/images6.jpg');
     animation-delay: -12s;
 }
 
 .slider .slide:nth-child(4) {
-    background-image: url('../../assets/taraz-z-widokiem.jpg');
+    background-image: url('../../assets/images7.jpg');
     animation-delay: -18s;
 }
 
@@ -72,6 +72,7 @@
     width: 50vw;
     text-shadow: 1px 1px 2px black;
     text-align: center;
+    font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
