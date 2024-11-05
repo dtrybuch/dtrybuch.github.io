@@ -1,0 +1,15 @@
+<app-small-slider [centerName]="title"></app-small-slider>
+
+<div class="row reservation-row">
+    <div class="col-3"></div>
+    <div class="col-2" style="text-align: center;">
+        <div class="title">
+            Wybierz datę rezerwacji
+        </div>
+        <mat-card>
+            <mat-calendar (selectedChange)="_onSelectedChange($event)"
+              [selected]="selectedDateRange" [dateFilter]="myFilter" [minDate]="minDate" [maxDate]="maxDate">
+            </mat-calendar>
+        </mat-card>
+    </div>
+</div>
