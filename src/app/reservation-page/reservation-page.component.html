@@ -1,17 +1,30 @@
 <app-small-slider [centerName]="title"></app-small-slider>
 
 <div class="row reservation-row">
-    <div class="col-3"></div>
+    <div class="col-1"></div>
     <div class="col-2">
         <div class="title">
-            Wybierz datę rezerwacji
+            Wybierz daty rezerwacji
         </div>
-        <mat-card class="field">
+        <mat-card class="field calendar-wrapper">
+
             <mat-calendar (selectedChange)="_onSelectedChange($event)" [selected]="selectedDateRange"
                 [dateFilter]="myFilter" [minDate]="minDate" [maxDate]="maxDate">
             </mat-calendar>
         </mat-card>
-        <p></p>
+    </div>
+    <div class="col-2">
+
+        <mat-card class="field calendar-wrapper">
+
+            <mat-calendar (selectedChange)="_onSelectedChange($event)" [selected]="selectedDateRange"
+                [dateFilter]="myFilter" [minDate]="minDate" [maxDate]="maxDate" [startAt]="nextMonth">
+            </mat-calendar>
+        </mat-card>
+
+    </div>
+    <div class="col-2" style="vertical-align: top;">
+        <p *ngIf="price"></p>
         <div class="title" *ngIf="price">
             Cena : {{price}} zł
         </div>
@@ -19,7 +32,6 @@
             Po wybraniu dat pojawi się cena!
         </div>
     </div>
-    <div class="col-2"></div>
     <div class="col-2" style="vertical-align: top;">
         <div class="title">
             Podaj dane osobowe
@@ -56,7 +68,8 @@
                 </mat-form-field>
             </p>
 
-            <p><mat-checkbox class="field" color="primary" formControlName="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w powyższym formularzu w celu dokonania rezerwacji.</mat-checkbox></p>
+            <p><mat-checkbox class="field" color="primary" formControlName="rodo">Wyrażam zgodę na przetwarzanie moich
+                    danych osobowych podanych w powyższym formularzu w celu dokonania rezerwacji.</mat-checkbox></p>
         </form>
     </div>
     <div class="col-3"></div>
@@ -65,7 +78,8 @@
 <div class="row">
     <div class="col-5"></div>
     <div class="col-2">
-        <button mat-raised-button color="primary" class="reserve-button" [disabled]="isAnyError()" (click)="submitReservation()">Potwierdź rezerwację</button>
+        <button mat-raised-button color="primary" class="reserve-button" [disabled]="isAnyError()"
+            (click)="submitReservation()">Potwierdź rezerwację</button>
     </div>
     <div class="col-5"></div>
 </div>

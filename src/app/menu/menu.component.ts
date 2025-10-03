@@ -8,25 +8,33 @@ import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
   animations: [
     trigger('allMenuAnimation', [
       state('small', style({
-        height: '50px',
-        backgroundColor: 'rgba(228, 228, 228, 0.884)'
+        height: '70px',
+        backgroundColor: 'rgba(228, 228, 228, 0.950)'
       })),
       state('big', style({
         height: '100px',
       })),
-      state('mobile', style({
-        height: '150px',
+      state('mobile-closed', style({
+        height: '60px',
+        backgroundColor: 'rgba(228, 228, 228, 0.950)'
+      })),
+      state('mobile-opened', style({
+        height: '332px',
+        backgroundColor: 'rgba(228, 228, 228, 0.950)'
       })),
       transition('small <=> big', [
         animate('0ms ease-in-out')
       ])
     ]),
     trigger('menuAnimation', [
+      state('mobile', style({
+        padding: '18px'
+      })),
       state('small', style({
-        padding: '10px'
+        padding: '22px'
       })),
       state('big', style({
-        padding: '30px',
+        padding: '37px',
       })),
       transition('small <=> big', [
         animate('0ms ease-in-out')
@@ -38,58 +46,38 @@ export class MenuComponent {
   constructor(private el: ElementRef, private renderer: Renderer2) {
 
   }
-  allMenuState: 'small' | 'big' | 'mobile' = this.isMobilePhone() ? 'mobile' : 'big';;
-  menuState: 'small' | 'big' = this.isMobilePhone() ? 'small' : 'big';;
+  mobileMenuOpen = false;
+  allMenuState: 'small' | 'big' | 'mobile-opened' | 'mobile-closed' = this.isMobilePhone() ? 'mobile-closed' : 'big';;
+  menuState: 'small' | 'big' | 'mobile' = this.isMobilePhone() ? 'mobile' : 'big';;
+
+  toggleMobileMenu() {
+    if(!this.isMobilePhone()) {
+      return;
+    }
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+    this.allMenuState = this.mobileMenuOpen ? 'mobile-opened' : 'mobile-closed';
+  }
+
   @HostListener('window:scroll', ['$event']) // for window scroll events
   onScroll() {
-    let menuElement = (<HTMLElement>this.el.nativeElement)
-      .querySelector('.sticky-row');
-    let disappears = menuElement?.querySelectorAll('.scrolled-disappear');
-    let menuElementLeft = menuElement?.querySelector('.scrolled-left');
     let multiplier = 0.95;
 
     if (this.isMobilePhone()) {
-      multiplier = 0.45;
-    }
-
-    if (window.scrollY > multiplier * window.innerHeight) {
-      this.allMenuState = 'small';
-      this.menuState = 'small';
-      if (this.isMobilePhone()) {
-        this.setDisappearsDisplay(disappears, "none");
-        this.addAndRemoveClass(menuElementLeft, 'col-12', 'col-4');
-        this.renderer.addClass(menuElementLeft, "left-padding");
-      }
-
-
+      this.menuState = 'mobile';
+      this.allMenuState = this.mobileMenuOpen ? 'mobile-opened' : 'mobile-closed';
     } else {
-
-      if (this.isMobilePhone()) {
-        this.allMenuState = 'mobile';
+      if (window.scrollY > multiplier * window.innerHeight) {
+        this.allMenuState = 'small';
         this.menuState = 'small';
-        this.setDisappearsDisplay(disappears, "inline-block");
-        this.addAndRemoveClass(menuElementLeft, 'col-4', 'col-12');
-        this.renderer.removeClass(menuElementLeft, "left-padding");
-      } else {
-        this.allMenuState = 'big';
-        this.menuState = 'big';
       }
-
+      else {
+        this.menuState = 'big';
+        this.allMenuState = 'big';
+      }
     }
   }
-  private addAndRemoveClass(element: Element | null | undefined, addClass: string, removeClass: string) {
-    this.renderer.removeClass(element, removeClass);
-    this.renderer.addClass(element, addClass);
-  }
 
-  private setDisappearsDisplay(disappears: NodeListOf<Element> | undefined, value: string) {
-    disappears?.forEach(disappear => {
-      let element = (<HTMLElement>disappear);
-      element.style.display = value;
-    });
-  }
-
-  private isMobilePhone() {
+  public isMobilePhone() {
     return window.innerWidth < 768;
   }
 }

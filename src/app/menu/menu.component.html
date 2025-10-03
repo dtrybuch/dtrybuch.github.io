@@ -1,7 +1,22 @@
 <div [@allMenuAnimation]="allMenuState" class="row sticky-row">
-    <div  class="col-4 menu scrolled-disappear"></div>
-    <div [@menuAnimation]="menuState" class="col-2 menu scrolled-disappear"><a routerLink="/">O nas</a></div>
-    <div [@menuAnimation]="menuState" class="col-2 menu scrolled-disappear"><a routerLink="contact">Kontakt</a></div>
-    <div class="col-2 menu scrolled-left"><a routerLink="reservation">Zarezerwuj</a></div>
-    <div class="col-2 menu scrolled-disappear"></div>
+    <!-- Hamburger tylko na telefonach -->
+    <div class="col-12 hamburger hamburger-container" *ngIf="isMobilePhone()" (click)="toggleMobileMenu()">
+        <div class="menu-label">Znamirowice 209</div> <!-- 👈 dodatkowy element po lewej -->
+        <div [class.open]="mobileMenuOpen" class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <ng-container *ngIf="!isMobilePhone() || (isMobilePhone() && mobileMenuOpen )">
+        <div class="col-2 menu"></div>
+        <div class="col-2 menu menu-label" *ngIf="!isMobilePhone()"> Znamirowice 209</div>
+        <div [@menuAnimation]="menuState" class="col-2 menu"><a (click)="toggleMobileMenu()" routerLink="/" >O nas</a></div>
+        <div [@menuAnimation]="menuState" class="col-2 menu"><a (click)="toggleMobileMenu()" routerLink="contact">Kontakt</a>
+        </div>
+        <div [@menuAnimation]="menuState" class="col-2 menu"><a (click)="toggleMobileMenu()" routerLink="reservation">Zarezerwuj</a>
+        </div>
+        <div class="col-2 menu"></div>
+    </ng-container>
+
 </div>

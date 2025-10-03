@@ -1,7 +1,7 @@
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DateRange, DefaultMatCalendarRangeStrategy, MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
+import { DateRange, DefaultMatCalendarRangeStrategy, MAT_DATE_RANGE_SELECTION_STRATEGY, MatDatepickerModule } from '@angular/material/datepicker';
 import { Title } from '@angular/platform-browser';
 import * as moment from 'moment';
 
@@ -48,9 +48,9 @@ export class ReservationPageComponent {
 
   selectedDateRange!: DateRange<Date>;
 
-  calendarMaxDate: Date = new Date(8640000000000000);
+  calendarMaxDate: Date = new Date(new Date().setMonth(new Date().getMonth() + 3));
 
-  reservedDates: Date[] = [new Date(2024, 10, 24), new Date(2024, 10, 22)].sort((a, b) => a.getTime() - b.getTime());
+  reservedDates: Date[] = [new Date(2025, 10, 22), new Date(2025, 9, 24)].sort((a, b) => a.getTime() - b.getTime());
 
   tmpReservedDates: Date[] = this.reservedDates;
 
@@ -58,9 +58,16 @@ export class ReservationPageComponent {
 
   minDate = new Date();
 
-  pricePerDay : { [key: string]: number } = { '20.11.2024': 1000, '21.11.2024': 2000 };
+  nextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1);
 
-  defaultPricePerDay : number = 800;
+  pricePerDay: { [key: string]: number } = { 
+    '20.09.2025': 1000, 
+    '21.10.2025': 2000,
+    '22.09.2025': 1200,
+    '23.09.2025': 1200
+  };
+
+  defaultPricePerDay: number = 800;
 
   price!: number;
 
@@ -91,11 +98,17 @@ export class ReservationPageComponent {
 
       } else {
         this.selectedDateRange = new DateRange(date, null);
-        let filteredReservation = this.tmpReservedDates.filter(reserveDate => date?.getTime() < reserveDate.getTime())
+        let filteredReservation = this.reservedDates.filter(reserveDate => date?.getTime() < reserveDate.getTime())
         this.maxDate = filteredReservation[0];
         this.tmpReservedDates = this.tmpReservedDates.filter(reserveDate => reserveDate != filteredReservation[0]);
       }
     }
+  }
+
+  getPrice(date: any): string {
+    const key = this.getDateString(date);
+    // return specific price if set, otherwise return the default price
+    return (this.pricePerDay[key] ?? this.defaultPricePerDay).toString();
   }
 
   myFilter = (d: Date | null): boolean => {
@@ -108,7 +121,7 @@ export class ReservationPageComponent {
   }
 
   submitReservation() {
-  
+
     // let order: UserWithAddressDTO = {
     //   firstName: this.firstNameInput?.value,
     //   lastName: this.lastNameInput?.value,
@@ -144,12 +157,18 @@ export class ReservationPageComponent {
     this.price = 0;
     let date = this.selectedDateRange.start as Date;
     for (let i = 0; i < daysDiff; i++) {
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-      const currentDate = day + "." + month + "." + year;
+      const currentDate = this.getDateString(date);
       this.price += this.pricePerDay[currentDate] ?? this.defaultPricePerDay;
       date = this._addDays(date, 1);
     }
   }
+
+  getDateString(date: any): string {
+    if (!date) {
+      return "";
+    }
+    const d = moment(date);
+    return d.format('DD.MM.YYYY');
+  }
+  
 }
